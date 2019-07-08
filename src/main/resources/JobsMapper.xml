@@ -1,0 +1,24 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.scitc.mapper.JobsMapper">
+    <resultMap id="JobsMapperMap" type="cn.com.scitc.model.Jobs">
+        <id column="job_id" property="jobId" jdbcType="INTEGER"/>
+        <id column="job_name" property="jobName" jdbcType="VARCHAR"/>
+        <id column="company_name" property="companyName" jdbcType="VARCHAR"/>
+        <id column="work_addr" property="workAddr" jdbcType="VARCHAR"/>
+        <id column="salary" property="salary" jdbcType="VARCHAR"/>
+        <id column="push_date" property="pushDate" jdbcType="VARCHAR"/>
+        <id column="job_key" property="jobKey" jdbcType="VARCHAR"/>
+
+    </resultMap>
+
+    <insert id="insert" keyColumn="jobId" useGeneratedKeys="true"  parameterType="cn.com.scitc.model.Jobs">
+      insert into jobs (job_name,company_name,work_addr,salary,push_date,job_key) values (#{jobName},#{companyName},#{workAddr},#{salary},#{pushDate},#{jobKey} )
+    </insert>
+
+
+    <select id="findAll" resultMap="JobsMapperMap">
+        SELECT * FROM jobs
+    </select>
+</mapper>
